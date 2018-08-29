@@ -1,8 +1,39 @@
 .index {
-  background-color: #007AFF;
-  padding-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url('http://p6ngidppe.bkt.clouddn.com/cloud.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .action-bar {
+    color: white;
+    font-size: 30px;
+    width: 100%;
+    text-align: left;
+    margin-left: 16px;
+  }
+
+  .tmp-curr {
+    position: relative;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .tmp {
+      font-size: 200px;
+      color: #FFFFFF;
+      font-weight: 100;
+    }
+
+    .degree {
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      top: 30px;
+      right: -30px;
+    }
+  }
 }

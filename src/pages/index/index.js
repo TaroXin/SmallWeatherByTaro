@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Button } from '@tarojs/components'
-import { AtAvatar } from 'taro-ui'
+import { View, Text } from '@tarojs/components'
 import MapSdk from '../../lib/qqmap-wx-jssdk'
+import Weather from '../../api/Weather'
 import './index.scss'
 
 export default class Index extends Component {
@@ -10,18 +10,30 @@ export default class Index extends Component {
   }
 
   state = {
-    userInfo: {},
-    location: '',
+    location: {},
+    statusBarHeight: 0,
+    now: {}, // 当天的天气预报
+    dailyForecast: {}, // 最近七天的天气预报
   }
 
   componentDidMount () {
     if (Taro.getEnv() === 'WEAPP') {
-      this.getWechatUserInfo()
+      this.getSystemInfo()
       this.getUserLocation()
       this.mapSdk = new MapSdk({
         key: 'EEABZ-LMTE6-VP3S4-MN5RX-OMNKZ-2FFMU'
       })
     }
+  }
+
+  getSystemInfo () {
+    wx.getSystemInfo({
+      success: res => {
+        this.setState({
+          statusBarHeight: res.statusBarHeight
+        })
+      }
+    })
   }
 
   getUserLocation () {
@@ -46,7 +58,14 @@ export default class Index extends Component {
         if (res.status === 0) {
           console.log(res)
           this.setState({
-            location: res.result.formatted_addresses.recommend
+            location: {
+              lat: e.latitude,
+              lon: e.longitude,
+              name: res.result.formatted_addresses.recommend
+            }
+          }, () => {
+            this.weather = new Weather(`${this.state.location.lat},${this.state.location.lon}`, 'ad44358729bb4b65af612e58890ded76')
+            this.getWeatherData()
           })
         } else {
           wx.showToast({
@@ -75,31 +94,32 @@ export default class Index extends Component {
     })
   }
 
-  getWechatUserInfo () {
-    wx.getUserInfo({
-      success: (e) => {
-        this.setState({ userInfo: e.userInfo })
-      }
+  getWeatherData () {
+    this.weather.now().then(res => {
+      this.setState({ now: res.now })
+    }).catch(() => {
+      wx.showToast({
+        title: '获取天气数据失败',
+        icon: 'none'
+      })
     })
   }
 
-  onGetUserInfo (e) {
-    if (e.detail.userInfo) {
-      console.log(e.detail.userInfo)
-      this.setState({ userInfo: e.detail.userInfo })
-    }
-  }
-
   render () {
+    let { now } = this.state
+
     return (
       <View className='index'>
-        <Text>{this.state.userInfo.nickName}</Text>
-        <AtAvatar image={this.state.userInfo.avatarUrl} circle />
-        <Text>{this.state.location}</Text>
+        <View style={{marginTop: this.state.statusBarHeight + 'px'}} className='action-bar'>
+          {this.state.location.name || '定位中...'}
+        </View>
 
-        <Button openType='getUserInfo' type='primary' size='default' onGetUserInfo={this.onGetUserInfo.bind(this)}>
-          获取用户信息
-        </Button>
+        <View className='tmp-curr'>
+          <Text className='tmp'>{now.fl}</Text>
+          <Text className='degree'>℃</Text>
+        </View>
+
+        <View style={{height: '600px'}}></View>
       </View>
     )
   }
