@@ -135,6 +135,16 @@
     vinyl "^2.1.0"
     vinyl-fs "^3.0.2"
 
+"@tarojs/components@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@tarojs/components/-/components-1.0.0-beta.17.tgz#85a5c497b16a5d174bdfbb7af55c581919ac2407"
+  dependencies:
+    classnames "^2.2.5"
+    nervjs "^1.3.0"
+    omit.js "^1.0.0"
+    react "16.3.0"
+    weui "^1.1.2"
+
 "@tarojs/components@^1.0.0-beta.19":
   version "1.0.0-beta.19"
   resolved "https://registry.yarnpkg.com/@tarojs/components/-/components-1.0.0-beta.19.tgz#f460ac16a588f58b17ee527a7a3ae9cbfdbc52c8"
@@ -169,11 +179,26 @@
   dependencies:
     uglify-js "^3.3.24"
 
+"@tarojs/router@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@tarojs/router/-/router-1.0.0-beta.17.tgz#65915b91cc802ece219148b9b2ed114f748fdb4e"
+  dependencies:
+    "@tarojs/taro-h5" "1.0.0-beta.17"
+
 "@tarojs/router@^1.0.0-beta.19":
   version "1.0.0-beta.19"
   resolved "https://registry.yarnpkg.com/@tarojs/router/-/router-1.0.0-beta.19.tgz#2ee78f175ff6bdb2af468dc27319146d0e458a36"
   dependencies:
     "@tarojs/taro-h5" "1.0.0-beta.19"
+
+"@tarojs/taro-h5@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro-h5/-/taro-h5-1.0.0-beta.17.tgz#c2cc5c64b08c704f88239087d7a32c3d058cc006"
+  dependencies:
+    "@tarojs/taro" "1.0.0-beta.17"
+    jsonp-retry "^1.0.3"
+    mobile-detect "^1.4.2"
+    whatwg-fetch "^2.0.4"
 
 "@tarojs/taro-h5@1.0.0-beta.19", "@tarojs/taro-h5@^1.0.0-beta.19":
   version "1.0.0-beta.19"
@@ -184,6 +209,15 @@
     mobile-detect "^1.4.2"
     whatwg-fetch "^2.0.4"
 
+"@tarojs/taro-weapp@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro-weapp/-/taro-weapp-1.0.0-beta.17.tgz#b54c074f7ae83f80e43127b4fe77c59f86085832"
+  dependencies:
+    "@tarojs/taro" "1.0.0-beta.17"
+    "@tarojs/utils" "1.0.0-beta.17"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
+
 "@tarojs/taro-weapp@^1.0.0-beta.19":
   version "1.0.0-beta.19"
   resolved "https://registry.yarnpkg.com/@tarojs/taro-weapp/-/taro-weapp-1.0.0-beta.19.tgz#7948b2d4fa7f57154e53bb5e575e1ba49656e0cf"
@@ -192,6 +226,10 @@
     "@tarojs/utils" "1.0.0-beta.19"
     lodash "^4.17.10"
     prop-types "^15.6.1"
+
+"@tarojs/taro@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-1.0.0-beta.17.tgz#c297aca02568adbced3fc85c620ba7b125f05fc2"
 
 "@tarojs/taro@1.0.0-beta.19", "@tarojs/taro@^1.0.0-beta.19":
   version "1.0.0-beta.19"
@@ -212,6 +250,10 @@
     html "^1.0.0"
     lodash "^4.17.5"
     typescript "^3.0.1"
+
+"@tarojs/utils@1.0.0-beta.17":
+  version "1.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/@tarojs/utils/-/utils-1.0.0-beta.17.tgz#2885581548c783bf635fc43a111e5f18a9cdcf78"
 
 "@tarojs/utils@1.0.0-beta.19":
   version "1.0.0-beta.19"
@@ -4466,6 +4508,13 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
+nerv-server@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/nerv-server/-/nerv-server-1.3.2.tgz#edf6e6087cafa4f67e964f4fc0909f3132b773e6"
+  dependencies:
+    nerv-shared "1.3.2"
+    nerv-utils "1.3.2-beta.0"
+
 nerv-shared@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/nerv-shared/-/nerv-shared-1.3.2.tgz#a389c2dcce35940577009e9da9ab63b5ffb06a61"
@@ -6310,6 +6359,20 @@ tar@^4:
     mkdirp "^0.5.0"
     safe-buffer "^5.1.2"
     yallist "^3.0.2"
+
+taro-ui@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/taro-ui/-/taro-ui-1.0.1.tgz#6794e79a96804233fab3dfd7d5c32deead05b186"
+  dependencies:
+    "@tarojs/components" "1.0.0-beta.17"
+    "@tarojs/router" "1.0.0-beta.17"
+    "@tarojs/taro" "1.0.0-beta.17"
+    "@tarojs/taro-h5" "1.0.0-beta.17"
+    "@tarojs/taro-weapp" "1.0.0-beta.17"
+    lodash "^4.17.10"
+    nerv-server "^1.3.2"
+    nervjs "^1.3.0"
+    prop-types "^15.6.2"
 
 text-table@~0.2.0:
   version "0.2.0"
