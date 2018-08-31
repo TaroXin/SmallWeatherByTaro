@@ -14,7 +14,11 @@ class App extends Component {
     }
   }
 
-  componentDidMount () {}
+  componentDidMount () {
+    wx.cloud.init({
+      env: 'small-weather-ccf9b9'
+    })
+  }
 
   componentDidShow () {}
 

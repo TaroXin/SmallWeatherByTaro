@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import MapSdk from '../../lib/qqmap-wx-jssdk'
 import Weather from '../../api/Weather'
+import Iconfont from '../../components/icon'
 import './index.scss'
 
 export default class Index extends Component {
@@ -22,6 +23,15 @@ export default class Index extends Component {
       this.getUserLocation()
       this.mapSdk = new MapSdk({
         key: 'EEABZ-LMTE6-VP3S4-MN5RX-OMNKZ-2FFMU'
+      })
+
+
+      wx.cloud.callFunction({
+        name: 'add'
+      }).then(res => {
+        console.log(res)
+      }).catch(res => {
+        console.log(res)
       })
     }
   }
@@ -96,10 +106,20 @@ export default class Index extends Component {
 
   getWeatherData () {
     this.weather.now().then(res => {
+      console.log(res)
       this.setState({ now: res.now })
     }).catch(() => {
       wx.showToast({
         title: '获取天气数据失败',
+        icon: 'none'
+      })
+    })
+
+    this.weather.forecast().then(res => {
+      console.log(res)
+    }).catch(() => {
+      wx.showToast({
+        title: '获取近七天数据失败',
         icon: 'none'
       })
     })
@@ -117,6 +137,11 @@ export default class Index extends Component {
         <View className='tmp-curr'>
           <Text className='tmp'>{now.fl}</Text>
           <Text className='degree'>℃</Text>
+        </View>
+
+        <View>
+          <Iconfont code={now.cond_code} />
+          <Text>{now.cond_text}</Text>
         </View>
 
         <View style={{height: '600px'}}></View>
