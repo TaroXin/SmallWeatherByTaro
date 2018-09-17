@@ -23,7 +23,7 @@ export default class Index extends Component {
       this.getUserLocation()
       this.mapSdk = new MapSdk({
         key: 'EEABZ-LMTE6-VP3S4-MN5RX-OMNKZ-2FFMU'
-      })
+      }) 
 
 
       wx.cloud.callFunction({
